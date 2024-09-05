@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfy6aay0thig6"]
+
+[ext_resource type="Texture2D" uid="uid://jqdra5slggpo" path="res://New Piskel (2).png" id="1_b20rn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nqyp"]
+atlas = ExtResource("1_b20rn")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbyuj"]
+atlas = ExtResource("1_b20rn")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yydfl"]
+atlas = ExtResource("1_b20rn")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdg16"]
+atlas = ExtResource("1_b20rn")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjygw"]
+atlas = ExtResource("1_b20rn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lryn1"]
+atlas = ExtResource("1_b20rn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i8ed"]
+atlas = ExtResource("1_b20rn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7i56m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nqyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbyuj")
+}],
+"loop": true,
+"name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_yydfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdg16")
+}],
+"loop": true,
+"name": &"Happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjygw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lryn1")
+}],
+"loop": true,
+"name": &"Talking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3i8ed")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d7kc3"]
+
+[node name="Text Box" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(472, 400)
+scale = Vector2(2, 1.742)
+sprite_frames = SubResource("SpriteFrames_7i56m")
+animation = &"Angry"
+frame_progress = 0.22651
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 520.0
+offset_top = 344.0
+offset_right = 638.0
+offset_bottom = 367.0
+text = "Wiz The Wizard"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 520.0
+offset_top = 384.0
+offset_right = 734.0
+offset_bottom = 459.0
+text = "Get out of my dunegon!!!!!!!!
+BLAAAAHHH!!!
+RRAAAAHHH!!!!"
+label_settings = SubResource("LabelSettings_d7kc3")
+horizontal_alignment = 1
+max_lines_visible = 5
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 416.0
+offset_top = 504.0
+offset_right = 630.0
+offset_bottom = 579.0
+grow_horizontal = 2
+grow_vertical = 0

@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4gv8u5bvboai"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_k5nfo"]
+[ext_resource type="Texture2D" uid="uid://c0bpgm7ndqxfp" path="res://Title.png" id="2_7fq3m"]
+[ext_resource type="Texture2D" uid="uid://dhm2vn2vdwkws" path="res://pixil-frame-0 (1).png" id="2_8niiy"]
+[ext_resource type="Texture2D" uid="uid://bup44ta1ip763" path="res://New Piskel (5).png" id="2_25lib"]
+[ext_resource type="FontFile" uid="uid://buq3mv1s7sic6" path="res://Gorgeous Pixel.ttf" id="2_fhcgl"]
+[ext_resource type="Shader" path="res://scroll.gdshader" id="2_qvxs3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gknl"]
+shader = ExtResource("2_qvxs3")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k5nfo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.355821, 0.579145, 1)
+
+[node name="Pattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_0gknl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_25lib")
+
+[node name="Title" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(600.788, 136.086)
+scale = Vector2(0.704, 0.7)
+texture = ExtResource("2_7fq3m")
+centered = false
+offset = Vector2(-755, -45)
+
+[node name="Wiz & Knight" type="Sprite2D" parent="Title"]
+position = Vector2(-119.017, 551.306)
+scale = Vector2(0.143466, 0.142857)
+texture = ExtResource("2_8niiy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -33.0
+offset_right = 48.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.97332, 1.03732)
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fhcgl")
+theme_override_font_sizes/font_size = 0
+text = "Start Game"
+flat = true
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_fhcgl")
+theme_override_font_sizes/font_size = 0
+text = "Quit"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

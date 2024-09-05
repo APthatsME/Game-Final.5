@@ -1,0 +1,211 @@
+[gd_scene load_steps=29 format=3 uid="uid://du7whocc6ypdb"]
+
+[ext_resource type="Script" path="res://boss.gd" id="1_2wjmc"]
+[ext_resource type="PackedScene" uid="uid://c3ag2xamjbiq7" path="res://bullet.tscn" id="2_yk1r4"]
+[ext_resource type="Texture2D" uid="uid://bup44ta1ip763" path="res://New Piskel (5).png" id="3_ddqyv"]
+[ext_resource type="Script" path="res://FiniteStateMachine.gd" id="3_qokol"]
+[ext_resource type="Texture2D" uid="uid://buyw7th535bxe" path="res://Wizard.png" id="3_wjqve"]
+[ext_resource type="Script" path="res://Idle.gd" id="4_3koiv"]
+[ext_resource type="Script" path="res://5Leaf.gd" id="5_rdkok"]
+[ext_resource type="Script" path="res://4Leaf.gd" id="6_3wxrl"]
+[ext_resource type="Script" path="res://3Leaf.gd" id="7_txwv4"]
+[ext_resource type="Script" path="res://2Leaf.gd" id="8_wgbff"]
+[ext_resource type="Texture2D" uid="uid://brc1dxc5jal6n" path="res://New Piskel (6).png" id="11_8aknu"]
+[ext_resource type="PackedScene" uid="uid://bxgbgy3axvjlh" path="res://countdown_timer.tscn" id="12_lky1c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbgoi"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5hmg"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk1ge"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ufq"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7503n"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwa2o"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5kws"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74lf2"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0tgs"]
+atlas = ExtResource("3_wjqve")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwwdq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbgoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5hmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk1ge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76ufq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7503n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwa2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5kws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74lf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0tgs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 27.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ixrux"]
+radius = 300.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulcob"]
+atlas = ExtResource("11_8aknu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2jjf"]
+atlas = ExtResource("11_8aknu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po2tt"]
+atlas = ExtResource("11_8aknu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k346s"]
+atlas = ExtResource("11_8aknu")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pu6av"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulcob")
+}],
+"loop": true,
+"name": &"Alarmed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2jjf")
+}],
+"loop": true,
+"name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po2tt")
+}],
+"loop": true,
+"name": &"Furious",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k346s")
+}],
+"loop": true,
+"name": &"Unamused",
+"speed": 5.0
+}]
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_2wjmc")
+bullet_node = ExtResource("2_yk1r4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2.5)
+scale = Vector2(1.91, 2)
+sprite_frames = SubResource("SpriteFrames_qwwdq")
+autoplay = "default"
+frame_progress = 0.622232
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 1.5)
+scale = Vector2(1.91, 2)
+texture = ExtResource("3_ddqyv")
+vframes = 2
+frame = 1
+
+[node name="Speed" type="Timer" parent="."]
+wait_time = 0.08
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Debug" type="Label" parent="."]
+visible = false
+offset_left = -24.0
+offset_top = -29.0
+offset_right = 26.0
+offset_bottom = -6.0
+text = "Debug"
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_ixrux")
+
+[node name="FiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("3_qokol")
+
+[node name="Idle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_3koiv")
+
+[node name="5Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("5_rdkok")
+
+[node name="4Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("6_3wxrl")
+
+[node name="3Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_txwv4")
+
+[node name="2Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("8_wgbff")
+
+[node name="Countdown Timer" parent="." instance=ExtResource("12_lky1c")]
+offset_left = -612.0
+offset_top = -194.0
+offset_right = -612.0
+offset_bottom = -194.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Countdown Timer"]
+position = Vector2(646, 176)
+sprite_frames = SubResource("SpriteFrames_pu6av")
+animation = &"Alarmed"
+
+[connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
+[connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]
+[connection signal="body_entered" from="PlayerDetection" to="Countdown Timer" method="_on_player_detection_body_entered"]

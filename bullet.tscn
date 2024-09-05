@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3ag2xamjbiq7"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_5pakc"]
+[ext_resource type="Texture2D" uid="uid://debn1f88h1a3t" path="res://New Piskel.png" id="2_jmsg8"]
+[ext_resource type="Texture2D" uid="uid://kjwgxrr155he" path="res://light.png" id="3_1ciy1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14aal"]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_5pakc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 4
+color = Color(4.23551e-06, 0.937707, 0.93814, 1)
+texture = ExtResource("3_1ciy1")
+texture_scale = 0.07
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jmsg8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_14aal")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
